@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="theme-color" content="#080b11">
+<meta name="description" content="股海浮沉 — 手机可玩的 30 天炒股模拟：买入卖出、突发新闻、结算资产。">
+<meta name="format-detection" content="telephone=no">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="股海浮沉">
+<title>股海浮沉 · 30 天炒股模拟</title>
+<link rel="manifest" href="./manifest.webmanifest">
+<link rel="icon" type="image/png" sizes="192x192" href="./icons/icon-192.png">
+<link rel="apple-touch-icon" href="./icons/apple-touch-icon.png">
+<link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+<div class="app" id="app" data-screen="market">
+
+  <header class="hud">
+    <div class="hud__cell">
+      <span class="hud__label">第</span>
+      <strong id="dayNum">1</strong>
+      <span class="hud__label">/ 30 天</span>
+    </div>
+    <div class="hud__cell hud__cell--total">
+      <span class="hud__label">总资产</span>
+      <strong id="netWorth">¥10,000</strong>
+      <span class="hud__pct" id="netPct">0.00%</span>
+    </div>
+    <a class="icon-btn" id="btnHome" href="https://qiuye-autumnnight.github.io/" aria-label="返回游戏盒">🏠</a>
+  </header>
+
+  <div class="ticker" id="ticker" hidden>
+    <span class="ticker__tag" id="tickerTag">新闻</span>
+    <span class="ticker__text" id="tickerText"></span>
+  </div>
+
+  <section class="chartbox">
+    <div class="chartbox__head">
+      <span class="chartbox__name" id="chartName">老王面馆</span>
+      <span class="chartbox__price" id="chartPrice">¥38.00</span>
+      <span class="chartbox__chg" id="chartChg">+0.00%</span>
+    </div>
+    <canvas id="chart" width="360" height="150"></canvas>
+    <div class="chartbox__foot">
+      <span id="chartLow">最低 —</span>
+      <span id="chartHigh">最高 —</span>
+    </div>
+  </section>
+
+  <section class="list" id="list"></section>
+
+  <section class="trade">
+    <div class="trade__row">
+      <span class="trade__label">数量</span>
+      <button type="button" class="step" id="btnMinus" aria-label="减少">−</button>
+      <span class="trade__qty" id="qty">0</span>
+      <button type="button" class="step" id="btnPlus" aria-label="增加">＋</button>
+      <button type="button" class="step step--max" id="btnMax">最大</button>
+    </div>
+    <div class="trade__row trade__row--btns">
+      <button type="button" class="btn btn--buy" id="btnBuy">买入</button>
+      <button type="button" class="btn btn--sell" id="btnSell">卖出</button>
+    </div>
+    <p class="trade__hint" id="tradeHint">现金 ¥10,000</p>
+    <p class="trade__toast" id="tradeToast"></p>
+  </section>
+
+  <footer class="foot">
+    <button type="button" class="btn btn--next" id="btnNext">下一天 →</button>
+  </footer>
+</div>
+
+<div class="overlay" id="overlay" hidden>
+  <div class="overlay__card">
+    <h2 class="overlay__title" id="ovTitle">股海浮沉</h2>
+    <p class="overlay__text" id="ovText"></p>
+    <button type="button" class="btn btn--primary" id="ovBtn">开始</button>
+  </div>
+</div>
+
+<script src="./game.js"></script>
+</body>
+</html>
